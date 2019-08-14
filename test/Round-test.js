@@ -17,63 +17,67 @@ describe('Round', function() {
   });
 
   it('should take in a deck of cards', function() {
-    expect(round.deckOfCards).to.equal(deck)
+    expect(round.deck).to.equal(deck);
+  });
+
+  it('should take have a turn counter', function() {
+    expect(round.turn).to.equal(0);
   });
 
   it('should have a current card which is from the top of the deck at the start of the round', function() {
-    expect(round.currentCard).to.eql(card1)
+    expect(round.returnCurrentCard()).to.eql(card1);
   });
 
   it('should have a list of incorrect guesses', function() {
-    expect(round.incorrectGuesses).to.eql([])
+    expect(round.incorrectGuesses).to.eql([]);
   });
 
   describe('returnCurrentCard', function() {
     it('should return the current card being played', function() {
-      expect(round.returnCurrentCard()).to.equal(card1)
+      expect(round.returnCurrentCard()).to.equal(card1);
     });
   });
     
   describe('takeTurn', function() {
     it('should update the turns counter', function() {
-      round.takeTurn('pug')
-      expect(round.turn).to.equal(1)
+      round.takeTurn('pug');
+      expect(round.turn).to.equal(1);
 
-      round.takeTurn('sea otter')
-      expect(round.turn).to.equal(2)
+      round.takeTurn('sea otter');
+      expect(round.turn).to.equal(2);
     });
 
-    it('should evaluate the guess ', function() {
-      expect(round.takeTurn('pug')).to.equal('incorrect!')
+    it('should evaluate the guess and return correct if right ', function() {
+      expect(round.takeTurn('elephant')).to.equal('correct!');
     });
-
-    it('should evaluate the guess ', function() {
-      expect(round.takeTurn('elephant')).to.equal('correct!')
+      
+    it('should evaluate the guess and return incorrect if wrong ', function() {
+      expect(round.takeTurn('pug')).to.equal('incorrect!');
     });
 
     it('should record the id of the card if the guess is incorrect', function() {
-      round.takeTurn('pug')
-      expect(round.incorrectGuesses).to.equal([1])
+      round.takeTurn('pug');
+      expect(round.incorrectGuesses).to.eql([1]);
     });
 
     it('should make the next card in the deck the current card', function() {
-      round.takeTurn('pug')
-      expect(round.currentCard).to.equal(card2)
+      round.takeTurn('pug');
+      expect(round.returnCurrentCard()).to.eql(card2);
     });
   });
 
   describe('calculatePercentCorrect', function() {
     it('should calulate the percentage of correct guesses', function() {
-      round.takeTurn('pug')
-      round.takeTurn('appendix')
-      round.takeTurn('Fitzgerald')
-      expect(round.calculatePercentCorrect()).to.equal(33)
+      round.takeTurn('pug');
+      round.takeTurn('appendix');
+      round.takeTurn('Fitzgerald');
+      expect(round.calculatePercentCorrect()).to.equal(33);
     });
   });
 
   describe('endRound', function() {
     it('should tell the user that the round is over and the percentage of questions answered correctly', function() {
-      expect(round.endRound()).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()} of the quesitons correctly!`)
+      expect(round.endRound()).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()}% of the quesitons correctly!`);
     });
   });
     
