@@ -1,7 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Card = require('../src/Card');
-const Turn = require('../src/Turn');
 const Deck = require('../src/Deck');
 
 let card1, card2, card3, deck
