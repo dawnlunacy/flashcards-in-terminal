@@ -16,8 +16,12 @@ describe('Round', function() {
     round = new Round(deck);
   });
 
+  it('should take in a deck of cards', function() {
+    expect(round.deckOfCards).to.equal(deck)
+  });
+
   it('should have a current card which is from the top of the deck at the start of the round', function() {
-    expect(round.currentCard).to.equal(card1)
+    expect(round.currentCard).to.eql(card1)
   });
 
   it('should have a list of incorrect guesses', function() {
