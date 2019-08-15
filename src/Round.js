@@ -22,12 +22,13 @@ class Round {
   }
 
   calculatePercentCorrect() {
-    let percentIncorrect =  this.incorrectGuesses.length / this.turn * 100
+    let percentIncorrect =  this.incorrectGuesses.length / this.turn * 100;
     return Math.floor(100 - percentIncorrect);
+    
   }
 
   endRound() {
-    return `** Round over! ** You answered ${this.calculatePercentCorrect()} of the quesitons correctly!`
+    return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the quesitons correctly!`
   }
 
   
