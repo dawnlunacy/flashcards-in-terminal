@@ -12,6 +12,7 @@ class Game {
     this.cards;
     this.deck;
     this.round;
+    this.startTime;
   }
 
   printMessage(deck, round) {
@@ -29,6 +30,7 @@ class Game {
     this.round = new Round(this.deck);
     this.printMessage(this.deck, this.round);
     this.printQuestion(this.round);
+    
   }
 
 }

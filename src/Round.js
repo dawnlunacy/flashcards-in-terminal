@@ -5,6 +5,8 @@ class Round {
     this.deck = deck;
     this.turn = 0;
     this.incorrectGuesses = [];
+    this.startTime = Date.now();
+    this.totalTime;
   }
 
   returnCurrentCard() {
@@ -28,7 +30,12 @@ class Round {
   }
 
   endRound() {
-    return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the quesitons correctly!`
+    let endTime = Date.now();
+    let timeElapsed = endTime - this.startTime;
+    let minutes = Math.floor(timeElapsed/ 60000);
+    let seconds = ((timeElapsed % 60000) / 1000).toFixed(0);
+    this.totalTime = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the quesitons correctly! It took you ${this.totalTime} to complete this set.`
   }
 
   
