@@ -13,6 +13,10 @@ class Game {
   printQuestion(round) {
       util.main(round);
   }
+
+  start() {
+    
+  }
 }
 
 module.exports = Game;
