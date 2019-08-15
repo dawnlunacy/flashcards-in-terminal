@@ -80,7 +80,7 @@ describe('Round', function() {
       round.takeTurn('pug');
       round.takeTurn('appendix');
       round.takeTurn('Fitzgerald');
-      expect(round.endRound()).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()}% of the quesitons correctly!`);
+      expect(round.endRound()).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()}% of the quesitons correctly! It took you 0:00 to complete this set.`);
     });
   });
     
